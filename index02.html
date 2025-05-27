@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Path</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Thin&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+    }
+
+    .container {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container.active {
+      display: flex;
+    }
+
+    .centered {
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .logo img {
+      width: 50px;
+      height: auto;
+      margin-right: 20px;
+      object-fit: contain;
+    }
+
+    .logo-text-thin {
+      font-family: 'Roboto Thin', sans-serif;
+      font-size: 2.8rem;
+      color: #e0e0e0;
+      font-weight: 100;
+      letter-spacing: 1px;
+    }
+
+    .input-box {
+      display: flex;
+      background-color: #dcdcdc;
+      border-radius: 16px;
+      padding: 16px 24px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .input-box input {
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      color: #444;
+      width: 300px;
+      outline: none;
+    }
+
+    .input-box button {
+      margin-left: 12px;
+      padding: 6px 16px;
+      border: 1px solid #aaa;
+      background-color: #eee;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    .header-text-small {
+      color: #ccc;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .header-text-large {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .card {
+      background-color: #2a2a2a;
+      padding: 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .course-title {
+      background-color: #ccc;
+      color: #333;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 20px 0;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .highlight-box {
+      background-color: #7B5DDF;
+      color: white;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      font-size: 1.6rem;
+    }
+
+    .arrow-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+      border-top: 1px solid #999;
+      padding-top: 20px;
+      font-size: 1.5rem;
+      width: 100%;
+      max-width: 700px;
+      cursor: pointer;
+    }
+
+    .arrow {
+      font-size: 2rem;
+      color: white;
+      margin-left: auto;
+    }
+
+    .arrow-label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .arrow-label small {
+      color: #bbb;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .planner {
+      max-width: 700px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .planner-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .planner-header img {
+      width: 30px;
+      height: auto;
+      margin-right: 10px;
+      margin-top:-80px;
+    }
+
+    .planner-header .highlight-box {
+      font-size: 2.2rem;
+      margin-top: 8px;
+    }
+
+    .week {
+      background-color: #ccc;
+      color: #333;
+      padding: 14px 20px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div id="page-input" class="container active centered">
+  <div class="logo">
+    <img src="skill path logo.png" alt="Skill Path 로고" style="width: 60px; margin-right: 20px;">
+    <div class="logo-text-thin" style="font-size: 3.2rem;">SKILL PATH</div>
+  </div>
+  <div class="input-box">
+    <input type="text" id="skillInput" placeholder="배우고 싶은 스킬을 입력하세요">
+    <button onclick="goToRecommendation()">추천받기</button>
+  </div>
+</div>
+  </div>
+  
+</div>
+</div>
+
+  </div>
+  
+</div>
+  </div>
+  
+</div>
+    </div>
+    </div>
+
+  <div id="page-recommend" class="container">
+  <div class="logo">
+    <img src="skill path logo.png" alt="Skill Path 로고" style="width: 36px; margin-right: 12px;">
+    <div class="logo-text-thin" style="font-size: 2rem;">SKILL PATH</div>
+  </div>
+  <div class="input-box">
+    <span id="userSkill" style="color: #444; font-weight: bold;"></span>
+  </div>
+  
+  <div class="planner-header">
+      <img src="skill path logo 2.png" alt="Skill Path 로고">
+      <div class="header">
+        <div class="header-text-small">사용자님께</div>
+        <div class="header-text-large">추천드려요</div>
+      </div>
+    </div>
+    <div id="recommendationCards">
+      <div class="card"><div class="course-title">✔ [추천 강의명]</div><p>평점: </p><p>리뷰 수: </p><p>수강시간: </p><p>스킬: </p><p>링크: </p></div>
+      <div class="card"><div class="course-title">✔ [추천 강의명]</div><p>평점: </p><p>리뷰 수: </p><p>수강시간: </p><p>스킬: </p><p>링크: </p></div>
+      <div class="card"><div class="course-title">✔ [추천 강의명]</div><p>평점: </p><p>리뷰 수: </p><p>수강시간: </p><p>스킬: </p><p>링크: </p></div>
+      <div class="card"><div class="course-title">✔ [추천 강의명]</div><p>평점: </p><p>리뷰 수: </p><p>수강시간: </p><p>스킬: </p><p>링크: </p></div>
+      <div class="card"><div class="course-title">✔ [추천 강의명]</div><p>평점: </p><p>리뷰 수: </p><p>수강시간: </p><p>스킬: </p><p>링크: </p></div>
+    </div>
+    <div class="arrow-section" onclick="goToPlanner()">
+      <div class="arrow-label">
+        <small>맞춤형</small>
+        <div><span class="highlight-box">학습 플랜</span>을 짜드릴까요?</div>
+      </div>
+      <div class="arrow">→</div>
+    </div>
+  </div>
+
+  <div id="page-planner" class="container">
+    <div class="planner-header">
+      <img src="skill path logo 2.png" alt="Skill Path 로고">
+      <div class="header">
+        <div class="header-text-small">사용자님을 위한</div>
+        <div class="highlight-box">학습 플래너</div>
+      </div>
+    </div>
+    <div class="planner" id="plannerContent">
+      <!-- JS로 주차별 학습 계획이 동적으로 들어올 영역 -->
+    </div>
+  </div>
+
+  <script>
+    function goToRecommendation() {
+      const userInput = document.getElementById('skillInput').value;
+      document.getElementById('page-input').classList.remove('active');
+      document.getElementById('page-recommend').classList.add('active');
+      document.getElementById('userSkill').textContent = userInput;
+
+      fetch("http://localhost:8000/recommend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_input: userInput,
+          skill_keywords: []
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const cards = document.getElementById("recommendationCards");
+        cards.innerHTML = "";
+        data.recommendations.forEach(course => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <div class="course-title">✔ ${course.title}</div>
+            <p>평점: ${course.rating_display}</p>
+            <p>리뷰 수: ${course.reviews_display}</p>
+            <p>수강시간: ${course.Schedule_display}</p>
+            <p>스킬: ${course.skills.join(', ')}</p>
+            <p>링크: <a href="${course.URL}" target="_blank">바로가기</a></p>
+          `;
+          cards.appendChild(card);
+        });
+
+        // 학습 플랜 데이터 저장
+        window.studyPlan = data.study_plan;
+      })
+      .catch(err => {
+        alert("추천 요청 중 오류 발생!");
+        console.error(err);
+      });
+    }
+
+    function goToPlanner() {
+      document.getElementById('page-recommend').classList.remove('active');
+      document.getElementById('page-planner').classList.add('active');
+
+      const planner = document.getElementById("plannerContent");
+      planner.innerHTML = "";
+      const weeks = window.studyPlan || {};
+      for (let week in weeks) {
+        const w = weeks[week];
+        const div = document.createElement("div");
+        div.className = "week";
+        div.innerText = `${week} - ${w.title} (${w.rating}, ${w.Schedule})`;
+        planner.appendChild(div);
+      }
+    }
+  </script>
+</body>
+</html>
